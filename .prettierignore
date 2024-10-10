@@ -1,0 +1,20 @@
+👋 (copy + paste your .gitignore file contents here) 👋
+
+**/*.md
+**/*.svg
+**/*.ejs
+**/*.html
+src/lib/*
+node_modules
+
+# Package manager files
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+shrinkwrap.json
+.pnpm-debug.log
+
+
+.d.ts
+dist
+storybook-static

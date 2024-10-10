@@ -1,0 +1,66 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "commonjs": true
+  },
+  //"extends": ["plugin:react/recommended", "airbnb"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended", //让 ESLint 兼容 TypeScript
+    "plugin:prettier/recommended", //箭头主体样式和首选箭头回调
+    "plugin:react/jsx-runtime", //禁用 React 17的新 JSX 转换相关规则
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended", //强制执行Hooks 规则。
+    //扩展"prettier"关闭了一堆核心 ESLint 规则，以及来自这些插件的一些规则
+    "prettier" // Prettier 的配置将覆盖 extends 数组中先前任何 代码格式化 相关的 ESLint 配置，二者就能并行不悖地工作了
+    //"prettier/@typescript-eslint" //禁用相关插件中所有关乎 代码格式化 的规则 "prettier/@typescript-eslint" has been merged into "prettier"
+  ], // 排后的规则会覆盖前面
+  "parser": "@typescript-eslint/parser", //让 ESLint 兼容 TypeScript
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    // "no-use-before-define": "off",
+    // "@typescript-eslint/no-use-before-define": ["error"],
+    // "no-param-reassign": "off",
+    // "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx", ".svg"] }],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "prettier/prettier": "error", //任何格式化错误就也被认为是 ESLint 错误了
+    "no-useless-escape": "off", //禁用不必要的转义
+    "@typescript-eslint/no-explicit-any": "off", // any 类型
+    "@typescript-eslint/ban-ts-comment": "off", // "@ts-ignore"
+    "react/react-in-jsx-scope": "off", // 'React' must be in scope when using JSX
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-empty-interface":"off",// 空类型
+    "@typescript-eslint/no-namespace": "off"
+  },
+  //rules 数组中自定义的规则会覆盖 prettier/@typescript-eslint 配置
+  //代码格式化 规则应该在 .prettierrc 中配置
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    },
+    "react": {
+      //"createClass": "createReactClass", // Regex for Component Factory to use,
+      // default to "createReactClass"
+      //"pragma": "React",  // Pragma to use, default to "React"
+      //"fragment": "Fragment",  // Fragment to use (may be a property of <pragma>), default to "Fragment"
+      "version": "detect" // React version. "detect" automatically picks the version you have installed.
+      // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
+      // default to latest and warns if missing
+      // It will default to "detect" in the future
+      //"flowVersion": "0.53" // Flow version
+    }
+  }
+}
